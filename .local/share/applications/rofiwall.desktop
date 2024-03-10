@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Wall
+Type=Application
+Icon=nitrogen
+Terminal=false
+Exec=~/.local/bin/rofiwall
+Keywords=wall;wallpaper;nitrogen;feh;rofiwall

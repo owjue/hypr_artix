@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Wifi
+Type=Application
+Icon=wifi-radar
+Terminal=false
+Exec=~/.local/bin/wifimenu
+Keywords=wifi;wifimenu;internet;ethernet

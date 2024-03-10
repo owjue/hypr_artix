@@ -1,0 +1,32 @@
+#!/bin/bash
+
+main() {
+    [[ $1 == cycle ]] && sleep 3; time=$((RANDOM % 3))
+
+    list=($(ls ~/.config/hypr/wall | shuf))
+    params="--transition-type=grow --transition-fps=144 --transition-pos=top-left"
+
+# type=grow, outer
+
+    for image in "${list[@]}"; do
+        cd ~/.config/hypr/wall/
+        echo "wall selected: $image"
+        swww img $image $params
+
+        sed -i "1s/^.*$/image=~\/.config\/hypr\/wall\/$image/" ~/.config/hypr/swaylock/config
+
+        case $1 in
+            "cycle")
+                case $time in
+                    "0") sleep 600 ;;
+                    "1") sleep 800 ;;
+                    "2") sleep 1000 ;;
+                    *) exit 1;
+                esac ;;
+
+            *) exit 0 ;;
+        esac
+    done
+}
+
+main "$@"

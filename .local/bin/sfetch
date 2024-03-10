@@ -1,0 +1,181 @@
+#!/bin/sh
+
+# Usage:
+# sfetch help
+
+# Main function
+main() {
+    get_info
+    colors
+
+    case $1 in
+        'random') random_ascii ;;
+        'rose') rose_ascii ;;
+        'arch') arch_ascii ;;
+        'soviet') soviet_ascii ;;
+        'minimal'|'min') no_ascii_min ;;
+        'no') no_ascii ;;
+        '-h'|'--help'|'help') help ;;
+        *) rose_ascii ;;
+    esac
+}
+
+# Colors
+colors() {
+    rose_color_1='\e[1;31m'
+    rose_color_2='\e[0;32m'
+    arch_color='\e[1;36m'
+    soviet_color='\e[1;31m'
+    desc_color='\e[1;35m'
+    separator_color='\e[0;37m'
+    text_color='\e[0;37m'
+    cyan_color='\e[36m'
+    end='\e[m'
+}
+
+# Random ascii-art function
+random_ascii() {
+    ascii=$((RANDOM % 5))
+    case $ascii in
+        '0') rose_ascii ;;
+        '1') arch_ascii ;;
+        '4') no_ascii ;;
+        '3') soviet_ascii ;;
+    esac
+}
+
+# Fetch with rose ascii-art
+rose_ascii() {
+echo -e "
+${rose_color_1}    .--.---.    
+${rose_color_1}   ( \\'--'/ )   ${desc_color} OS\e[0m ~ ${text_color}${os}
+${rose_color_1}  ( '..-...' )  ${desc_color} Kernel\e[0m ~ ${text_color}${kernel}
+${rose_color_1}   '.'-._.'.'   ${desc_color} Environment\e[0m ~ ${text_color}${de}
+${rose_color_1}    <-.,.->     ${desc_color} Packages\e[0m ~ ${text_color}${packages}
+${rose_color_2}       '\(  _   ${desc_color} Shell\e[0m ~ ${text_color}${shell}
+${rose_color_2}       < \ / \  ${desc_color} Terminal\e[0m ~ ${text_color}${term}
+${rose_color_2}       __ \'_/  ${desc_color} Editor\e[0m ~ ${text_color}${editor}
+${rose_color_2}      |  \ \    ${desc_color} Uptime\e[0m ~ ${text_color}${uptime}
+${rose_color_2}       '__'.\ > 
+${rose_color_2}             \  $end
+"
+}
+
+
+# Fetch with Arch Linux ascii-art
+arch_ascii() {
+echo -e "
+${arch_color}         .        ${desc_color} OS\e[0m : ${text_color}${os}
+${arch_color}        / \       ${desc_color} Kernel\e[0m : ${text_color}${kernel}
+${arch_color}       /   \      ${desc_color} Environment\e[0m : ${text_color}${de}
+${arch_color}      /^.   \     ${desc_color} Packages\e[0m : ${text_color}${packages}
+${arch_color}     /  .-.  \    ${desc_color} Shell\e[0m : ${text_color}${shell}
+${arch_color}    /  (   ) _\   ${desc_color} Terminal\e[0m : ${text_color}${term}
+${arch_color}   / _.~   ~._^\  ${desc_color} Editor\e[0m : ${text_color}${editor}
+${arch_color}  /.^         ^.\ ${desc_color} Uptime\e[0m : ${text_color}${uptime}${end}
+"
+}
+
+
+# Fetch with soviet ascii-art
+soviet_ascii() {
+echo -e "
+${soviet_color}  ⠀⠀⠀⠀⠀⠀⢀⣤⣀⣀⣀⠀⠻⣷⣄       ${desc_color} OS\e[0m : ${text_color}${os}
+${soviet_color}  ⠀⠀⠀⠀⢀⣴⣿⣿⣿⡿⠋⠀⠀⠀⠹⣿⣦⡀    ${desc_color} Kernel\e[0m : ${text_color}${kernel}
+${soviet_color}  ⠀⠀⢀⣴⣿⣿⣿⣿⣏⠀⠀⠀⠀⠀⠀⢹⣿⣧    ${desc_color} Environment\e[0m : ${text_color}${de}
+${soviet_color}  ⠀⠀⠙⢿⣿⡿⠋⠻⣿⣿⣦⡀⠀⠀⠀⢸⣿⣿⡆   ${desc_color} Packages\e[0m : ${text_color}${packages}
+${soviet_color}  ⠀⠀⠀⠀⠉⠀⠀⠀⠈⠻⣿⣿⣦⡀⠀⢸⣿⣿⡇   ${desc_color} Shell\e[0m : ${text_color}${shell}
+${soviet_color}  ⠀⠀⠀⠀⢀⣀⣄⡀⠀⠀⠈⠻⣿⣿⣶⣿⣿⣿⠁   ${desc_color} Terminal\e[0m : ${text_color}${term}
+${soviet_color}  ⠀⠀⠀⣠⣿⣿⢿⣿⣶⣶⣶⣶⣾⣿⣿⣿⣿⡁    ${desc_color} Editor\e[0m : ${text_color}${editor}
+${soviet_color}  ⢠⣶⣿⣿⠋⠀⠀⠉⠛⠿⠿⠿⠿⠿⠛⠻⣿⣿⣦⡀  ${desc_color} Uptime\e[0m : ${text_color}${uptime}
+${soviet_color}  ⣿⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⡿ ${end}
+"
+}
+
+# Fetch without ascii-art
+no_ascii() {
+echo -e "
+${desc_color}  OS\e[0m : ${text_color}${os}
+${desc_color}  Kernel\e[0m : ${text_color}${kernel}
+${desc_color}  Environment\e[0m : ${text_color}${de}
+${desc_color}  Packages\e[0m : ${text_color}${packages}
+${desc_color}  Shell\e[0m : ${text_color}${shell}
+${desc_color}  Terminal\e[0m : ${text_color}${term}
+${desc_color}  Editor\e[0m : ${text_color}${editor}
+${desc_color}  Uptime\e[0m : ${text_color}${uptime}${end}
+"
+}
+
+# Wfetch-like
+no_ascii_min() {
+echo -e "
+${cyan_color}  os\e[0m ~ ${text_color}${os}
+${cyan_color}  sh\e[0m ~ ${text_color}${shell}
+${cyan_color}  wm\e[0m ~ ${text_color}${de}
+${cyan_color}  kr\e[0m ~ ${text_color}${kernel}
+"
+}
+
+# Help function
+help() {
+echo -e "
+${desc_color}  Sfetch${text_color} - Simple Fetch written in sh
+
+${desc_color}  Usage${text_color}:
+  sfetch [ascii_logo]
+          random
+          rose
+          arch
+          soviet
+          no
+
+  ${desc_color}Example${text_color}:
+  sfetch arch
+
+  ${desc_color}Common Issues & Fixes${text_color}:
+    I don't know how to install sfetch
+      Simply type the following command into the terminal:
+        ${desc_color}sudo ln -s /path/to/sfetch /usr/bin/sfetch${text_color}
+
+    Unknown editor or terminal
+      Add .bashrc or whatever you are using the following lines:
+        ${desc_color}export TERM='alacritty'
+        export EDITOR='nvim'${text_color}
+      Of course you need to replace ${desc_color}nvim${text_color} and ${desc_color}alacritty${text_color} with your editor and terminal.${end}
+"
+}
+
+# Get info function
+get_info() {
+    if [ -n "${XDG_CURRENT_DESKTOP}" ]; then
+    	de="${XDG_CURRENT_DESKTOP}"
+    elif [ -n "${DESKTOP_SESSION}" ]; then
+    	de="${DESKTOP_SESSION}"
+    elif [ -n "${XDG_SESSION_TYPE}" ]; then
+    	de="${XDG_SESSION_TYPE}"
+    else
+        de='TTY'
+    fi
+
+    if [ -n "${EDITOR}" ]; then
+        editor="${EDITOR^}"
+    else
+        editor="Unknown"
+    fi
+
+    if [ -n "${TERM}" ]; then
+        term="${TERM^}"
+    else
+        term="Unknown"
+    fi
+
+    source /etc/os-release
+
+    os="${PRETTY_NAME}"
+    kernel="$(uname -r)"; kernel="${kernel%%-*}"
+    uptime="$(uptime -p | sed 's/up //')"
+    packages="$(pacman -Q | wc -l)"
+    shell="$(basename $SHELL)"; shell="${shell^}"
+}
+
+main "$@"

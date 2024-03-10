@@ -1,0 +1,68 @@
+* {
+	font-family: "JetBrainsMono";
+  font-size: 17px;
+	background-image: none;
+}
+
+
+window {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+button {
+	color: #908caa;
+	background-color: rgba(12, 12, 12, 0);
+    outline-style: none;
+    border: none;
+    border-width: 0px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 12%;
+    border-radius: 0px;
+    box-shadow: none;
+    text-shadow: none;
+    animation: gradient_f 20s ease-in infinite;
+}
+
+button:focus {
+  background-color: rgba(12, 12, 12, 0);
+  background-size: 20%;
+}
+
+button:active {
+  color: #ffffff;
+}
+
+button:hover {
+  color: #eb6f92;
+	background-color: #eb6f92;
+	border: none;
+  background-size: 25%;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.4s cubic-bezier(.55,0.0,.28,1.682);
+}
+
+
+#lock {
+    background-image: image(url("/home/owju/.config/hypr/wlogout/icons/lock.png"), url("/home/owju/.config/hypr/wlogout/icons/lock.png"));
+}
+
+#logout {
+    background-image: image(url("/home/owju/.config/hypr/wlogout/icons/logout.png"), url("/home/owju/.config/hypr/wlogout/icons/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("/home/owju/.config/hypr/wlogout/icons/suspend.png"), url("/home/owju/.config/hypr/wlogout/icons/suspend.png"));
+}
+
+#hibernate {
+    background-image: image(url("/home/owju/.config/hypr/wlogout/icons/hibernate.png"), url("/home/owju/.config/hypr/wlogout/icons/hibernate.png"));
+}
+
+#shutdown {
+    background-image: image(url("/home/owju/.config/hypr/wlogout/icons/shutdown.png"), url("/home/owju/.config/hypr/wlogout/icons/shutdown.png"));
+}
+
+#reboot {
+    background-image: image(url("/home/owju/.config/hypr/wlogout/icons/reboot.png"), url("/home/owju/.config/hypr/wlogout/icons/reboot.png"));
+}

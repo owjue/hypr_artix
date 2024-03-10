@@ -1,0 +1,41 @@
+font:
+  normal:
+    family: Cascadia Code
+    style: Regular
+
+  bold:
+    family: Cascadia Code
+    style: Bold
+
+  italic:
+    family: Cascadia Code
+    style: Italic
+
+  size: 11
+  offset:
+    x: 0
+    y: 0
+
+  glyph_offset:
+    x: 0
+    y: 0
+
+window:
+  padding:
+    x: 10
+    y: 10
+  opacity: 0.9
+  dimensions:
+    columns: 150
+    lines: 50
+  dynamic_title: true
+
+cursor:
+  #   - ▇ Block
+  #   - _ Underline
+  #   - | Beam
+  shape: Block
+  unfocused_hollow: true
+
+import:
+  - ~/.config/alacritty/themes/rose-pine.yml 

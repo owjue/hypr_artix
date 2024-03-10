@@ -1,0 +1,14 @@
+* {
+    background:  #191724e6;
+    background-alt: #1f1d2e;
+	transparent: #00000000;
+    border-col: #454355;
+    selected-col: #191724;
+    accent: #1f1d2e;
+    iris: #c4a7e7;
+	text-color: #e0def4;
+	border: #c4a7e7;
+    foreground: #908caa;
+    foreground-alt: #f38ba880;
+    font: "Cascadia Code 11";
+}

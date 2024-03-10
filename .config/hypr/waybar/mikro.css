@@ -1,0 +1,131 @@
+@import "./themes/rose-pine.css";
+
+* {
+  border: none;
+  font-family: "JetBrainsMono, Font Awesome";
+  font-weight: bold;
+  font-size: 16px;
+}
+
+window#waybar {
+  background: rgba(21, 18, 27, 0);
+  color: @text;
+}
+
+tooltip {
+  background: @base;
+  opacity: 0.9;
+  border-width: 2px;
+  border-style: solid;
+  border-color: @overlay;
+}
+
+#workspaces button {
+  padding: 5px;
+  color: @highlightMed;
+  margin-right: 5px;
+}
+
+#workspaces button.active {
+  color: @text;
+}
+
+#workspaces button.focused {
+  color: @subtle;
+  background: @love;
+  border-radius: 10px;
+}
+
+#workspaces button.urgent {
+  color: @love;
+  background: @base;
+  border-radius: 10px;
+}
+
+#workspaces button:hover {
+  background: @highlightLow;
+  color: @text;
+  border-radius: 10px;
+}
+
+#custom-notify,
+#custom-menu,
+#custom-exit,
+#custom-music,
+#custom-weather,
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#bluetooth,
+#language,
+#temperature,
+#workspaces,
+#taskbar,
+#tray,
+#memory,
+#backlight {
+  background: @base;
+  opacity: 0.9;
+  padding: 0px 10px;
+  border: 2px solid @overlay;
+  margin-left: 12px;
+  border-radius: 10px;
+}
+
+#network {
+  color: @love;
+}
+
+#pulseaudio {
+  color: @iris;
+}
+
+#backlight {
+  color: @foam;
+  margin-right: 12px;
+}
+
+#memory {
+  color: @rose;
+}
+
+#battery {
+  color: @rose;
+}
+
+#taskbar,
+#tray {
+  border-radius: 10px;
+  padding-right: 9px;
+  padding-left: 9px;
+}
+
+#workspaces {
+  background: @base;
+  border-radius: 10px;
+  margin-left: 12px;
+  padding-right: 0px;
+  padding-left: 5px;
+}
+
+#window {
+  border-radius: 10px;
+  margin-right: 12px;
+}
+
+window#waybar.empty {
+  background-color: transparent;
+}
+
+window#waybar.empty #window {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  background-color: transparent;
+}
+
+#clock {
+  color: @golt;
+}

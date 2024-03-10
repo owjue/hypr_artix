@@ -1,0 +1,45 @@
+#!/bin/bash
+
+main() {
+    walldir="$HOME/.config/hypr/wall"
+    params="--transition-type=grow --transition-fps=144 --transition-pos=top-left"
+    selectpic
+    swww img $params "$( find "$walldir" -name "$wall*" )"
+}
+
+selectpic() {
+    cd "$walldir" || exit
+    wall=$( ls "$walldir" | cut -f 1 -d '.' | rofi -dmenu -p ">" )
+        if [ "$wall" ]; then
+            chosenwall=$wall
+        else
+            exit 0
+        fi
+}
+
+update_swaylock_config() {
+    local config_file="$HOME/.config/hypr/swaylock/config"
+    if [ ! -f "$config_file" ]; then
+        echo "File don't found: $config_file" >&2
+        return 1
+    fi
+
+    local original_line=$(head -n 1 "$config_file")
+    local new_line="image=~/.config/hypr/wall/$wall*"
+    if [ "$original_line" != "$new_line" ]; then
+        sed -i "1s|^.*|$new_line|" "$config_file"
+    fi
+}
+
+selectpic() {
+    cd "$walldir" || exit
+    wall=$( ls "$walldir" | cut -f 1 -d '.' | rofi -dmenu -p ">" )
+
+    if [ "$wall" ]; then
+        chosenwall=$wall
+        update_swaylock_config "$chosenwall"
+    else
+        exit 0
+    fi
+}
+main "$@"

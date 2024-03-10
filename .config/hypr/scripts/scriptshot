@@ -1,0 +1,68 @@
+#!/bin/sh
+
+# Uses: scriptshot <flags>
+# -a Size
+# -s Save
+# -n Notify
+
+# Автор: https://t.me/komydatb
+
+main() {
+    flags "$@"
+    options
+    cases
+    echo "grim -c $SLURP $IMG $NOTIFY"
+    eval grim -c $SLURP $IMG $NOTIFY
+}
+
+options() {
+    background="21202e80"                                           # Background
+    # accent="9ccfd8"                                                 # Border-color
+    weight="1"                                                      # Border-style
+    font="CascadiaCode"                                             # Font
+    path="$HOME/Pictures/scr/scr-$(date +%s).png"                   # Where
+    lang="en"                                                       # Language
+}
+
+flags() {
+    while getopts 'asn' flag; do
+        case "${flag}" in
+            a) a_flag='true' ;;
+            s) s_flag='true' ;;
+            n) n_flag='true' ;;
+            *) exit 1 ;;
+        esac
+    done
+}
+
+cases() {
+    case $a_flag in
+        "true") SLURP="-g \"\$(slurp -b $background -w $weight -F $font -d)\"" ;;
+        *) SLURP="" ;;
+    esac
+
+    case $s_flag in
+        "true") IMG="$path && wl-copy < $path" ;;
+        *) IMG="| wl-copy" ;;
+    esac
+
+    case $n_flag in
+        "true")
+            case $lang in
+                "en")
+                    case $s_flag in
+                        "true") NOTIFY="&& notify-send Screenshot \"Has been saved and copied\"" ;;
+                        *) NOTIFY="&& notify-send Screenshot \"Has been copied\"" ;;
+                    esac ;;
+                "ru")
+                    case $s_flag in
+                        "true") NOTIFY="&& notify-send Скриншот \"Сохранён и скопирован\"" ;;
+                        *) NOTIFY="&& notify-send Скриншот \"Просто скопирован\"" ;;
+                    esac ;;
+                *) notify-send Scriptshot "Error: Idk your language ($lang)" ;;
+            esac ;;
+        *) ;;
+    esac
+}
+
+main "$@"

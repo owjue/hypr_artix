@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Randwall
+Type=Application
+Icon=nitrogen
+Terminal=false
+Exec=~/.local/bin/randwall
+Keywords=wall;wallrand;randwall

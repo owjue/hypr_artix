@@ -1,0 +1,10 @@
+#!/bin/bash
+killall waybar
+
+waybar -c ~/.config/hypr/waybar/config.jsonc -s ~/.config/hypr/waybar/style.css &
+
+hyprctl reload
+
+killall mako
+
+mako -c ~/.config/hypr/mako/config &

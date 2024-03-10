@@ -1,0 +1,36 @@
+{
+    "label" : "lock",
+    "action" : "swaylock --config ~/.config/hypr/swaylock/config",
+    "text" : "lock",
+    "keybind" : "l"
+}
+{
+    "label" : "hibernate",
+    "action" : "pkill wlogout",
+    "text" : "cancel",
+    "keybind" : "c"
+}
+{
+    "label" : "logout",
+    "action" : "hyprctl dispatch exit",
+    "text" : "logout",
+    "keybind" : "q"
+}
+{
+    "label" : "shutdown",
+    "action" : "loginctl poweroff",
+    "text" : "poweroff",
+    "keybind" : "p"
+}
+{
+    "label" : "suspend",
+    "action" : "swaylock --config ~/.config/hypr/swaylock/config && loginctl suspend",
+    "text" : "sleep",
+    "keybind" : "s"
+}
+{
+    "label" : "reboot",
+    "action" : "loginctl reboot",
+    "text" : "restart",
+    "keybind" : "r"
+}
