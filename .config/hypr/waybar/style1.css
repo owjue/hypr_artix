@@ -1,33 +1,43 @@
 @import "./themes/rose-pine.css";
 
 * {
-  border: none;
-  border-radius: 10px;
-  background-color: @base;
-  opacity: 0.96;
-  font-family: "JetBrainsMono, Font Awesome";
+  font-family: "CascadiaCode, Font Awesome";
   font-weight: bold;
-  font-size: 16px;
+  font-size: 15px;
   min-height: 0;
+  border-radius: 0px;
 }
 
 window#waybar {
-  background: rgba(21, 18, 27, 0);
+  background-color: @background;
   color: @text;
 }
 
+#window {
+  margin-right: 10px;
+}
+
+window#waybar.empty {
+  background-color: @background;
+}
+
+window#waybar.empty #window {
+  padding: 0px;
+  margin: 0px;
+  background-color: @background;
+}
+
 tooltip {
-  background: @overlay;
+  background: @background;
   opacity: 0.9;
   border-width: 2px;
   border-style: solid;
-  border-color: @base;
+  border-color: @overlay;
 }
 
 #workspaces button {
   padding: 5px;
   color: @highlightMed;
-  margin-right: 5px;
 }
 
 #workspaces button.active {
@@ -41,7 +51,7 @@ tooltip {
 
 #workspaces button.urgent {
   color: @love;
-  background: @base;
+  background: @background;
 }
 
 #workspaces button:hover {
@@ -56,20 +66,16 @@ tooltip {
 #window,
 #clock,
 #language,
-#battery,
 #pulseaudio,
 #network,
 #bluetooth,
 #temperature,
 #workspaces,
 #taskbar,
-#tray,
 #cpu,
 #memory,
 #backlight {
-  background: @overlay;
-  padding: 0px 10px;
-  margin: 6px;
+  padding: 0px 12px;
 }
 
 #cpu {
@@ -109,11 +115,18 @@ tooltip {
 
 #taskbar,
 #tray {
-  padding-left: 9px;
+  color: @pine;
+  padding-right: 5px;
 }
 
 #custom-menu {
+  margin-left: 12px;
+  color: @text;
   padding: 0px;
+}
+
+#custom-music {
+  color: @text;
 }
 
 #custom-exit {
@@ -123,27 +136,10 @@ tooltip {
 }
 
 #workspaces {
-  background: @base;
   margin-left: 10px;
   padding-right: 0px;
   padding-left: 5px;
 }
-
-#window {
-  margin-left: 5px;
-  margin-right: 10px;
-}
-
-window#waybar.empty {
-  background-color: transparent;
-}
-
-window#waybar.empty #window {
-  padding: 0px;
-  margin: 0px;
-  background-color: transparent;
-}
-
 
 #network {
   color: @love;
@@ -151,12 +147,11 @@ window#waybar.empty #window {
 }
 
 #clock {
-  color: @golt;
+  color: @rose;
 }
 
 #backlight {
   color: @text;
-  margin-right: 6px;
   padding-right: 5px;
   padding-left: 5px;
 }
@@ -169,5 +164,6 @@ window#waybar.empty #window {
 
 #battery {
   color: @foam;
-  padding-left: 8px;
+  padding-right: 8px;
+  padding-left: 5px;
 }

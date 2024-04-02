@@ -72,7 +72,7 @@
 
 
   "clock": {
-    "format": "{: %I:%M   %d/%m}",
+    "format": " {:%I:%M  %d/%m}",
     "tooltip-format": "<tt>{calendar}</tt>",
     "calendar": {
       "mode": "month",

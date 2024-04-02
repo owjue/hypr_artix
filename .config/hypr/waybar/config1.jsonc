@@ -1,29 +1,25 @@
 {
   "layer": "top",
-  "position": "bottom",
-  "height": 40,
-  "width": 1200,
-  "margin-bottom": 9,
+  "position": "top",
+  "height": 36,
 
 
   "modules-left": [
-    "cpu",
-    "memory",
-    "tray",
+    "custom/menu",
+    "hyprland/workspaces",
     "hyprland/window"
   ],
 
   "modules-center": [
-    "custom/menu",
-    "hyprland/workspaces"
+  "custom/music"
   ],
 
   "modules-right": [
+    "tray",
     "battery",
     "pulseaudio",
     "backlight",
     "clock"
-    // "custom/notify"
   ],
 
 
@@ -43,6 +39,9 @@
       "4": "四",
       "5": "五",
       "6": "六"
+    },
+    "persistent_workspaces": {
+      "*": 6
     },
     "tooltip": false
   },
@@ -73,7 +72,7 @@
 
 
   "clock": {
-    "format": "{: %I:%M}",
+    "format": " {:%I:%M}",
     "tooltip-format": "<tt>{calendar}</tt>",
     "calendar": {
       "mode": "month",
@@ -106,9 +105,8 @@
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
     "format-alt": "{time} {icon}",
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󱈑"],
-    // "format-icons": ["", "", "", "", ""],
-    "tooltip": false
+    "format-icons": ["", "", "", "", ""]
+    // "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󱈑"]
   },
   
 
@@ -116,9 +114,9 @@
     "device": "amdgpu_bl1",
     "format": "{icon} {percent}%",
     "format-icons": ["", "", "", ""],
-    "on-scroll-up": "brightnessctl set +2%",
-    "on-scroll-down": "brightnessctl set 2%-",
-    "on-click": "pkill wlsunset || wlsunset -s 21:00 -T 5500",
+    "on-scroll-up": "brightnessctl set +1%",
+    "on-scroll-down": "brightnessctl set 1%-",
+    "on-click": "pkill wlsunset || wlsunset -s 23:00 -T 5500",
     "min-length": 6,
     "tooltip": false
   },
@@ -177,9 +175,20 @@
 	"custom/menu": {
 		"format": "{icon}",
 		"format-icons": "",
-		"on-click": "rofi -show drun -show-icons",
+		"on-click": "rofi -show drun",
 		"escape": true,
 		"tooltip": false
+	},
+
+
+	"custom/music": {
+	  "format": "{}",
+	  "interval": 1,
+	  "exec": "playerctl metadata --format '{{artist}} - {{title}}'",
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous",
+	  "tooltip": false
 	},
 
 
