@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 main() {
     [[ $1 == cycle ]] && sleep 3; time=$((RANDOM % 3))
