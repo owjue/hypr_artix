@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 main() {
     walldir="$HOME/.config/hypr/wall"
