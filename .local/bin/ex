@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 case $1 in
 	*.7z) 7z x "$1" ;;
 	*.zip) 7z x "$1" ;;
