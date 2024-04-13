@@ -5,21 +5,16 @@
 
 
   "modules-left": [
-    "custom/menu",
-    "hyprland/workspaces",
-    "hyprland/window"
+    "hyprland/workspaces"
   ],
 
   "modules-center": [
-  "custom/music"
+    "custom/music"
   ],
 
   "modules-right": [
     "tray",
-    "battery",
-    "pulseaudio",
-    "backlight",
-    "clock"
+    "pulseaudio"
   ],
 
 
@@ -49,8 +44,8 @@
 
   "hyprland/language": {
     "format": "{}",
-    "format-en": "EN",
-    "format-ru": "RU",
+    "format-en": "[en]",
+    "format-ru": "[ru]",
     "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
   },
 
@@ -72,7 +67,8 @@
 
 
   "clock": {
-    "format": " {:%I:%M}",
+    // "format": "{:%a %b %d, %I:%M %p}", // 12 hours
+    "format": "{:%a %b %d, %H:%M}", // 24 hours
     "tooltip-format": "<tt>{calendar}</tt>",
     "calendar": {
       "mode": "month",
@@ -101,19 +97,18 @@
       "warning": 30,
       "critical": 20
     },
-    "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",
-    "format-plugged": " {capacity}%",
-    "format-alt": "{time} {icon}",
+    // "format": "{icon} {capacity}%",
+    "format": "bat: {capacity}%",
+    "format-charging": "Charging",
+    "format-plugged": "Plugged",
+    "format-alt": "remain {time}",
     "format-icons": ["", "", "", "", ""]
-    // "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󱈑"]
   },
   
 
   "backlight": {
     "device": "amdgpu_bl1",
-    "format": "{icon} {percent}%",
-    "format-icons": ["", "", "", ""],
+    "format": "light: {percent}%",
     "on-scroll-up": "brightnessctl set +1%",
     "on-scroll-down": "brightnessctl set 1%-",
     "on-click": "pkill wlsunset || wlsunset -s 23:00 -T 5500",
@@ -134,14 +129,14 @@
 
 
   "cpu": {
-		"format": " {usage}%",
+		"format": "cpu: {usage}%",
 		"tooltip": false
   },
 
 
 	"memory": {
     "interval": 5,
-		"format": " {}%",
+		"format": "mem: {}%",
 		"tooltip": false,
     "on-click": "alacritty -e htop"
 	},
@@ -149,10 +144,10 @@
 
   "temperature": {
     "thermal-zone": 2,
-    "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon5/temp1_input",
-    "format": "{temperatureC}°C",
+    // "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon5/temp1_input",
+    "format": "tem: {temperatureC}",
     "critical-threshold": 80,
-    "format-critical": "{temperatureC}°C",
+    "format-critical": "tem: {temperatureC}",
     "tooltip": false
   },
 
@@ -160,12 +155,12 @@
   "pulseaudio": {
 	  "scroll-step": 3,
 	  "format": "{icon} {volume}%",
-	  "format-muted": " 0%",
+	  "format-muted": "mute: 0%",
     "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-		  "default": ["", "", ""]
+      "headphone": "volume:",
+      "hands-free": "headset:",
+      "headset": "headset:",
+		  "default": "volume:"
 		},
 	  "on-click": "pavucontrol",
     "on-click-right": "pamixer --toggle-mute"
@@ -173,8 +168,8 @@
 
 
 	"custom/menu": {
-		"format": "{icon}",
-		"format-icons": "",
+		"format": "Menu",
+		// "format": "󱄅",
 		"on-click": "rofi -show drun",
 		"escape": true,
 		"tooltip": false
@@ -193,7 +188,8 @@
 
 
   "custom/exit": {
-    "format": "󰤆",
+    // "format": "󰤆",
+    "format": "Power",
     "on-click": "wlogout -l ~/.config/hypr/wlogout/layout --css ~/.config/hypr/wlogout/style.css",
     "tooltip": false
   },
@@ -211,10 +207,10 @@
     "tooltip": false,
     "format": "{icon}",
     "format-icons": {
-      "notification": "<span foreground='#ff6699'><small><sup>⬤</sup></small></span>",
-      "none": "",
-      "dnd-notification": "",
-      "dnd-none": ""
+      "notification": "Notify",
+      "none": "notify",
+      "dnd-notification": "mute",
+      "dnd-none": "mute"
     },
     "return-type": "json",
     "exec-if": "which swaync-client",

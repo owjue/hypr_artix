@@ -90,7 +90,12 @@ tooltip {
   padding-right: 8px;
 }
 
-#language,
+#language {
+  color: @text;
+  padding-right: 5px;
+  padding-left: 8px;
+}
+
 #temperature {
   color: @golt;
   padding-left: 8px;
@@ -127,16 +132,15 @@ tooltip {
 
 #custom-music {
   color: @text;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 #custom-exit {
   color: @love;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 
 #workspaces {
-  margin-left: 10px;
   padding-right: 0px;
   padding-left: 5px;
 }
@@ -147,23 +151,21 @@ tooltip {
 }
 
 #clock {
-  color: @rose;
+  color: @text;
 }
 
 #backlight {
   color: @text;
-  padding-right: 5px;
   padding-left: 5px;
 }
 
 #pulseaudio {
-  color: @iris;
-  padding-right: 5px;
+  color: @text;
   padding-left: 5px;
 }
 
 #battery {
-  color: @foam;
+  color: @text;
   padding-right: 8px;
   padding-left: 5px;
 }
